@@ -1,5 +1,5 @@
 .bg-primary {
-  background-color: $primary !important;
+  background: linear-gradient(135deg, $gradient-start 0%, $gradient-end 100%) !important;
 }
 
 .text-primary {
@@ -8,9 +8,85 @@
 
 a {
   color: $primary;
+  transition: all 0.3s ease;
   &:hover,
   &:focus,
   &:active {
     color: darken($primary, 15%);
+    text-decoration: none;
+  }
+}
+
+// Social Icons
+.social-icons {
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 3.5rem;
+    background: rgba(102, 126, 234, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: $white !important;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    &:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+      background: rgba(118, 75, 162, 0.8);
+      border-color: rgba(255, 255, 255, 0.5);
+      
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Skills Icons
+.dev-icons {
+  font-size: 3rem;
+  
+  .list-inline-item {
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+    
+    i {
+      color: $gray-700;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        color: $primary;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+// Enhanced list styles
+.fa-ul {
+  li {
+    margin-bottom: 0.8rem;
+    line-height: 1.8;
   }
 }
