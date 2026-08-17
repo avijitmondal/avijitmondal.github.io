@@ -100,7 +100,7 @@ Modify the CSS variables in `assets/css/styles.css` to change the color scheme:
 
 - **Glassmorphism Navbar**: Transparent navigation with blur effect
 - **Scroll Animations**: Elements fade in as you scroll
-- **Featured Projects**: Personal projects (Gamiverse, Saver) have special badges
+- **Featured Projects**: Personal projects (Gamiverse, Saver, Things) have special badges
 - **Responsive Design**: Breakpoints at 1600px, 1024px, 768px, and 480px
 - **Modern Typography**: System font stack for optimal performance
 
