@@ -112,146 +112,168 @@
     <!-- Skills Section -->
     <section id="skills">
         <h2 class="section-title">Skills & Technologies</h2>
-        <div class="skills-container">
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Golang</span>
+        <div class="skills-carousel-wrapper fade-in">
+            <button class="carousel-btn prev-btn" id="prevSkillBtn" aria-label="Previous skill category">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="skills-carousel-container">
+                <div class="skills-carousel-track" id="skillsTrack">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Golang</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-server"></i> Frameworks & APIs</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">Microservices</span>
+                            <span class="skill-tag">RESTful APIs</span>
+                            <span class="skill-tag">Angular</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">GCP</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">Jenkins</span>
+                            <span class="skill-tag">Ansible</span>
+                            <span class="skill-tag">Helm</span>
+                            <span class="skill-tag">Terraform</span>
+                            <span class="skill-tag">S3</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i> Databases & Messaging</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Postgres</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Cassandra</span>
+                            <span class="skill-tag">Kafka</span>
+                            <span class="skill-tag">RabbitMQ</span>
+                            <span class="skill-tag">Database Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Tools & Methodologies</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Maven</span>
+                            <span class="skill-tag">Gradle</span>
+                            <span class="skill-tag">JUnit</span>
+                            <span class="skill-tag">Mockito</span>
+                            <span class="skill-tag">Agile/Scrum</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-server"></i> Frameworks & APIs</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">Spring Boot</span>
-                    <span class="skill-tag">Microservices</span>
-                    <span class="skill-tag">RESTful APIs</span>
-                    <span class="skill-tag">Angular</span>
-                </div>
-            </div>
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">AWS</span>
-                    <span class="skill-tag">GCP</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">Kubernetes</span>
-                    <span class="skill-tag">Jenkins</span>
-                    <span class="skill-tag">Ansible</span>
-                    <span class="skill-tag">Helm</span>
-                    <span class="skill-tag">Terraform</span>
-                    <span class="skill-tag">S3</span>
-                </div>
-            </div>
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-database"></i> Databases & Messaging</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">Postgres</span>
-                    <span class="skill-tag">MySQL</span>
-                    <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">Cassandra</span>
-                    <span class="skill-tag">Kafka</span>
-                    <span class="skill-tag">RabbitMQ</span>
-                    <span class="skill-tag">Database Design</span>
-                </div>
-            </div>
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-tools"></i> Tools & Methodologies</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">Maven</span>
-                    <span class="skill-tag">Gradle</span>
-                    <span class="skill-tag">JUnit</span>
-                    <span class="skill-tag">Mockito</span>
-                    <span class="skill-tag">Agile/Scrum</span>
-                </div>
-            </div>
+            <button class="carousel-btn next-btn" id="nextSkillBtn" aria-label="Next skill category">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
+        <div class="carousel-dots" id="skillsCarouselDots"></div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card fade-in featured-project">
-                <div class="project-badge">Personal</div>
-                <div class="project-header">
-                    <h3>Gamiverse</h3>
-                    <p class="project-type">Gaming Platform</p>
-                </div>
-                <div class="project-body">
-                    <p>Gamiverse is a game hub developed using Flutter for Web and Android. It serves as a unified platform to host multiple simple games, providing a seamless and engaging experience for users.</p>
-                    <div class="project-links">
-                        <a href="https://gamiverse.avijitmondal.com/" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
-                        </a>
+        <div class="projects-carousel-wrapper fade-in">
+            <button class="carousel-btn prev-btn" id="prevProjectBtn" aria-label="Previous project">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="projects-carousel-container">
+                <div class="projects-carousel-track" id="projectsTrack">
+                    <div class="project-card featured-project">
+                        <div class="project-badge">Personal</div>
+                        <div class="project-header">
+                            <h3>Gamiverse</h3>
+                            <p class="project-type">Gaming Platform</p>
+                        </div>
+                        <div class="project-body">
+                            <p>Gamiverse is a game hub developed using Flutter for Web and Android. It serves as a unified platform to host multiple simple games, providing a seamless and engaging experience for users.</p>
+                            <div class="project-links">
+                                <a href="https://gamiverse.avijitmondal.com/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="project-card fade-in featured-project">
-                <div class="project-badge">Personal</div>
-                <div class="project-header">
-                    <h3>Saver</h3>
-                    <p class="project-type">Portfolio Tracker</p>
-                </div>
-                <div class="project-body">
-                    <p>Saver is a modern personal finance and investment tracking app designed to help you manage, monitor, and grow your wealth with ease. With Saver, you can track your investments, savings, and financial goals in one place, receive insightful analytics, and stay informed about your financial health.</p>
-                    <div class="project-links">
-                        <a href="https://saver.avijitmondal.com/" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
-                        </a>
+                    <div class="project-card featured-project">
+                        <div class="project-badge">Personal</div>
+                        <div class="project-header">
+                            <h3>Saver</h3>
+                            <p class="project-type">Portfolio Tracker</p>
+                        </div>
+                        <div class="project-body">
+                            <p>Saver is a modern personal finance and investment tracking app designed to help you manage, monitor, and grow your wealth with ease. With Saver, you can track your investments, savings, and financial goals in one place, receive insightful analytics, and stay informed about your financial health.</p>
+                            <div class="project-links">
+                                <a href="https://saver.avijitmondal.com/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="project-card fade-in featured-project">
-                <div class="project-badge">Personal</div>
-                <div class="project-header">
-                    <h3>Things</h3>
-                    <p class="project-type">Home & Warranty Tracker</p>
-                </div>
-                <div class="project-body">
-                    <p>Things is an app designed to track all your home purchases, warranties, AMC contracts, and servicing dates, keeping your household assets and maintenance schedules organized in one place.</p>
-                    <div class="project-links">
-                        <a href="https://things.avijitmondal.com/" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
-                        </a>
+                    <div class="project-card featured-project">
+                        <div class="project-badge">Personal</div>
+                        <div class="project-header">
+                            <h3>Things</h3>
+                            <p class="project-type">Home & Warranty Tracker</p>
+                        </div>
+                        <div class="project-body">
+                            <p>Things is an app designed to track all your home purchases, warranties, AMC contracts, and servicing dates, keeping your household assets and maintenance schedules organized in one place.</p>
+                            <div class="project-links">
+                                <a href="https://things.avijitmondal.com/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="project-card fade-in">
-                <div class="project-header">
-                    <h3>Cisco Registered Envelope Service</h3>
-                    <p class="project-type">Cloud-Based Encryption Solution</p>
-                </div>
-                <div class="project-body">
-                    <p>Advanced cloud-based encryption key service for secure messaging. Simplifies encryption complexity while meeting compliance requirements, enabling seamless secure communications without additional infrastructure investment.</p>
-                    <div class="project-links">
-                        <a href="#contact" class="project-link">
-                            <i class="fas fa-info-circle"></i> Learn More
-                        </a>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Cisco Registered Envelope Service</h3>
+                            <p class="project-type">Cloud-Based Encryption Solution</p>
+                        </div>
+                        <div class="project-body">
+                            <p>Advanced cloud-based encryption key service for secure messaging. Simplifies encryption complexity while meeting compliance requirements, enabling seamless secure communications without additional infrastructure investment.</p>
+                            <div class="project-links">
+                                <a href="#contact" class="project-link">
+                                    <i class="fas fa-info-circle"></i> Learn More
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="project-card fade-in">
-                <div class="project-header">
-                    <h3>ABot Test Framework</h3>
-                    <p class="project-type">Test Orchestration Solution</p>
-                </div>
-                <div class="project-body">
-                    <p>BDD-based test orchestration framework with high-level DSL for automated testing. Enhanced with S1AP/Diameter drivers to emulate eNodeB/HSS/MME for EPC-specific scenarios, enabling comprehensive telecom protocol testing.</p>
-                    <div class="project-links">
-                        <a href="#contact" class="project-link">
-                            <i class="fas fa-info-circle"></i> Learn More
-                        </a>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>ABot Test Framework</h3>
+                            <p class="project-type">Test Orchestration Solution</p>
+                        </div>
+                        <div class="project-body">
+                            <p>BDD-based test orchestration framework with high-level DSL for automated testing. Enhanced with S1AP/Diameter drivers to emulate eNodeB/HSS/MME for EPC-specific scenarios, enabling comprehensive telecom protocol testing.</p>
+                            <div class="project-links">
+                                <a href="#contact" class="project-link">
+                                    <i class="fas fa-info-circle"></i> Learn More
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <button class="carousel-btn next-btn" id="nextProjectBtn" aria-label="Next project">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
+        <div class="carousel-dots" id="carouselDots"></div>
     </section>
 
     <!-- Education Section -->

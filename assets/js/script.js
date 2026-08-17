@@ -109,3 +109,150 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Reusable Carousel Controller with Height Equalization
+function setupCarousel({ trackId, prevBtnId, nextBtnId, dotsId }) {
+    const track = document.getElementById(trackId);
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+    const dotsContainer = document.getElementById(dotsId);
+
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    const cards = Array.from(track.children);
+    let currentIndex = 0;
+
+    function getVisibleCards() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+    }
+
+    function getMaxIndex() {
+        const visibleCards = getVisibleCards();
+        return Math.max(0, cards.length - visibleCards);
+    }
+
+    function equalizeHeights() {
+        cards.forEach(card => {
+            card.style.height = '';
+        });
+        let maxHeight = 0;
+        cards.forEach(card => {
+            const h = card.offsetHeight;
+            if (h > maxHeight) maxHeight = h;
+        });
+        if (maxHeight > 0) {
+            cards.forEach(card => {
+                card.style.height = `${maxHeight}px`;
+            });
+        }
+    }
+
+    function updateCarousel() {
+        equalizeHeights();
+
+        const maxIdx = getMaxIndex();
+        if (currentIndex > maxIdx) currentIndex = maxIdx;
+        if (currentIndex < 0) currentIndex = 0;
+
+        const card = cards[0];
+        if (card) {
+            const style = window.getComputedStyle(track);
+            const gap = parseFloat(style.gap) || 32;
+            const cardWidth = card.offsetWidth;
+            const shift = currentIndex * (cardWidth + gap);
+            track.style.transform = `translateX(-${shift}px)`;
+        }
+
+        // Render Dots
+        const totalDots = maxIdx + 1;
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement('button');
+            dot.className = `carousel-dot ${i === currentIndex ? 'active' : ''}`;
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => {
+                currentIndex = i;
+                updateCarousel();
+            });
+            dotsContainer.appendChild(dot);
+        }
+
+        // Button States
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= maxIdx;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < getMaxIndex()) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+
+    // Touch Swipe Navigation
+    let startX = 0;
+    let currentX = 0;
+    let isSwiping = false;
+
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        isSwiping = true;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+        currentX = e.touches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', () => {
+        if (!isSwiping) return;
+        const diffX = startX - currentX;
+        if (Math.abs(diffX) > 40) {
+            if (diffX > 0 && currentIndex < getMaxIndex()) {
+                currentIndex++;
+            } else if (diffX < 0 && currentIndex > 0) {
+                currentIndex--;
+            }
+            updateCarousel();
+        }
+        isSwiping = false;
+    });
+
+    // Recalculate on window resize & image/font load
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateCarousel, 100);
+    });
+
+    window.addEventListener('load', updateCarousel);
+
+    // Initial positioning
+    updateCarousel();
+}
+
+// Initialize Projects Carousel
+setupCarousel({
+    trackId: 'projectsTrack',
+    prevBtnId: 'prevProjectBtn',
+    nextBtnId: 'nextProjectBtn',
+    dotsId: 'carouselDots'
+});
+
+// Initialize Skills Carousel
+setupCarousel({
+    trackId: 'skillsTrack',
+    prevBtnId: 'prevSkillBtn',
+    nextBtnId: 'nextSkillBtn',
+    dotsId: 'skillsCarouselDots'
+});
